@@ -1,5 +1,6 @@
 package com.example.android.sunshineapp;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,5 +60,6 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
     public void saveWeatherData(String[] weatherData){
         mWeatherData = weatherData;
         notifyDataSetChanged();
+        Log.d("tag", "saveWeatherData: working");
     }
 }

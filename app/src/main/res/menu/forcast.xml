@@ -13,4 +13,10 @@
         android:orderInCategory="1"
         app:showAsAction="never"/>
 
+    <item
+        android:title="@string/settings"
+        android:orderInCategory="100"
+        android:id="@+id/settings"
+        app:showAsAction="never"/>
+
 </menu>

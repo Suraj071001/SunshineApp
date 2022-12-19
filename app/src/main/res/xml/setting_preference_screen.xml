@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <EditTextPreference
+        android:key="@string/location"
+        android:title="Location"
+        android:defaultValue="Asha Model School"
+        android:singleLine="true"/>
+    <ListPreference
+        android:defaultValue="@string/celcius"
+        android:key="temperature"
+        android:title="Temperature"
+        android:entries="@array/temperature"
+        android:entryValues="@array/temperature"/>
+</PreferenceScreen>
