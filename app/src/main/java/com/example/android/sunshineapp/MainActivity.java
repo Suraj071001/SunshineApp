@@ -143,9 +143,8 @@ public class MainActivity extends AppCompatActivity implements ForecastAdapter.F
 
             @Override
             public String[] loadInBackground() {
-                String location = SunshinePreferences.getPreferredWeatherLocation(MainActivity.this);
 
-                URL weatherRequestUrl = NetworkUtils.buildUrl(location);
+                URL weatherRequestUrl = NetworkUtils.getUrl(MainActivity.this);
 
                 try {
                     String jsonWeatherResponse = NetworkUtils
