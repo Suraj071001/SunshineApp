@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/detail_accent_pane_background"
+    android:paddingBottom="@dimen/forecast_detail_vertical_padding"
+    android:paddingEnd="@dimen/forecast_detail_horizontal_padding"
+    android:paddingLeft="@dimen/forecast_detail_horizontal_padding"
+    android:paddingRight="@dimen/forecast_detail_horizontal_padding"
+    android:paddingStart="@dimen/forecast_detail_horizontal_padding"
+    android:paddingTop="@dimen/forecast_detail_vertical_padding">>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/detail_accent_label"
+        android:fontFamily="sans-serif"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Humidity"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/humidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="100dp"
+        tools:text="76%"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/detail_accent_label"
+        android:fontFamily="sans-serif"
+        android:layout_marginTop="16dp"
+        android:text="Pressure"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/pressure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="16dp"
+        tools:text="988 hPa"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/humidity"
+        app:layout_constraintTop_toBottomOf="@+id/humidity" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/detail_accent_label"
+        android:fontFamily="sans-serif"
+        android:layout_marginTop="16dp"
+        android:text="Wind"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/wind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="@android:color/white"
+        tools:text="3 km/h SW"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/pressure"
+        app:layout_constraintTop_toBottomOf="@+id/pressure" />
+</androidx.constraintlayout.widget.ConstraintLayout>

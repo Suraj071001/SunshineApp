@@ -13,6 +13,7 @@ import androidx.preference.PreferenceScreen;
 
 import com.example.android.sunshineapp.data.SunshinePreferences;
 import com.example.android.sunshineapp.data.WeatherContract;
+import com.example.android.sunshineapp.sync.SunshineSyncUtils;
 
 
 public class SettingFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener {
@@ -73,6 +74,7 @@ public class SettingFragment extends PreferenceFragmentCompat implements SharedP
             // we've changed the location
             // Wipe out any potential PlacePicker latlng values so that we can use this text entry.
             SunshinePreferences.resetLocationCoordinates(activity);
+            SunshineSyncUtils.startImmediateSync(getContext());
         } else if (key.equals(getString(R.string.pref_units_key))) {
             // units have changed. update lists of weather entries accordingly
             activity.getContentResolver().notifyChange(WeatherContract.WeatherEntry.CONTENT_URI, null);

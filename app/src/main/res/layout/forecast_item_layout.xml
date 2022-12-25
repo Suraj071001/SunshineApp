@@ -1,21 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:paddingBottom="@dimen/list_item_padding_vertical"
+    android:paddingLeft="@dimen/list_item_padding_horizontal"
+    android:paddingRight="@dimen/list_item_padding_horizontal"
+    android:paddingTop="@dimen/list_item_padding_vertical"
+    android:orientation="horizontal"
+    android:background="@drawable/touch_selector">
+
+
+    <ImageView
+        android:id="@+id/weatherIcon"
+        android:layout_width="@dimen/list_icon"
+        android:layout_height="@dimen/list_icon"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_clear" />
 
     <TextView
-        android:id="@+id/tv_weather_data"
+        android:id="@+id/dateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="22sp"
-        android:padding="16dp" />
+        android:layout_marginLeft="@dimen/list_item_date_left_margin"
+        android:layout_marginStart="@dimen/list_item_date_start_margin"
+        android:textColor="@color/primary_text"
+        tools:text="Today,december 15"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/weatherIcon" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#dadada"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"/>
+        android:id="@+id/highTempTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="18"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/primary_text"
+        android:textSize="@dimen/forecast_text_size"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/dateTextView"
+        app:layout_constraintEnd_toStartOf="@id/lowTempTextView"
+        app:layout_constraintTop_toTopOf="@+id/dateTextView"
+        tools:ignore="SpUsage" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/lowTempTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/secondary_text"
+        tools:text="13"
+        android:textSize="@dimen/forecast_text_size"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/highTempTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/highTempTextView" />
+
+    <TextView
+        android:id="@+id/descriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/secondary_text"
+        tools:text="sunny"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/weatherIcon"
+        app:layout_constraintTop_toBottomOf="@id/dateTextView" />
+</androidx.constraintlayout.widget.ConstraintLayout>

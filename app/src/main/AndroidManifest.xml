@@ -12,14 +12,16 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SunshineApp"
+        android:theme="@style/AppTheme.Forecast"
         tools:targetApi="31">
         <activity
             android:name=".Settings"
             android:exported="false" />
+
         <activity
             android:name=".DetailActivity"
             android:exported="false" />
+
         <activity
             android:launchMode="singleTop"
             android:name=".MainActivity"
@@ -30,10 +32,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <provider
             android:name=".data.WeatherProvider"
             android:authorities="com.example.android.sunshineapp"
             android:exported="false" />
+
+        <service
+            android:name=".sync.SunshineSyncIntentService"
+            android:exported="false" />
+        <service
+            android:name=".sync.SunshineJobSchedular"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
+
     </application>
 
 </manifest>

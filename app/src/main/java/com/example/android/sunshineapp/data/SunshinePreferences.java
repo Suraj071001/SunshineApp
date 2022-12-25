@@ -3,12 +3,9 @@ package com.example.android.sunshineapp.data;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import androidx.preference.Preference;
 import androidx.preference.PreferenceManager;
 
 import com.example.android.sunshineapp.R;
-import com.example.android.sunshineapp.SettingFragment;
-import com.example.android.sunshineapp.Settings;
 
 public class SunshinePreferences {
 
@@ -49,7 +46,7 @@ public class SunshinePreferences {
     public static String getPreferredWeatherLocation(Context context) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         String location_name = context.getString(R.string.location);
-        return sharedPreferences.getString(location_name,"Asha Model School");
+        return sharedPreferences.getString(location_name,"Delhi");
     }
 
     /**
@@ -59,11 +56,8 @@ public class SunshinePreferences {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         String celsius = context.getString(R.string.celcius);
         String temp = sharedPreferences.getString("temperature",celsius);
-        if(temp == celsius){
-            return true;
-        }else{
-            return false;
-        }
+        if (temp == celsius) return true;
+        else return false;
     }
 
     /**
@@ -130,4 +124,25 @@ public class SunshinePreferences {
         return timeSinceLastNotification;
     }
 
+    public static boolean areNotificationsEnabled(Context context) {
+        /* Key for accessing the preference for showing notifications */
+        String displayNotificationsKey = context.getString(R.string.pref_enable_notifications_key);
+
+
+        /* As usual, we use the default SharedPreferences to access the user's preferences */
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+
+        /* If a value is stored with the key, we extract it here. If not, use a default. */
+        boolean shouldDisplayNotifications = sp
+                .getBoolean(displayNotificationsKey,true);
+
+        return shouldDisplayNotifications;
+    }
+    public static void saveLastNotificationTime(Context context, long timeOfNotification) {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sp.edit();
+        String lastNotificationKey = context.getString(R.string.pref_last_notification);
+        editor.putLong(lastNotificationKey, timeOfNotification);
+        editor.apply();
+    }
 }

@@ -25,6 +25,7 @@ import android.widget.TextView;
 
 import com.example.android.sunshineapp.data.SunshinePreferences;
 import com.example.android.sunshineapp.data.WeatherContract;
+import com.example.android.sunshineapp.sync.SunshineSyncUtils;
 import com.example.android.sunshineapp.utilities.FakeDataUtils;
 import com.example.android.sunshineapp.utilities.NetworkUtils;
 import com.example.android.sunshineapp.utilities.OpenWeatherJsonUtils;
@@ -60,8 +61,6 @@ public class MainActivity extends AppCompatActivity implements ForecastAdapter.F
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FakeDataUtils.insertFakeData(this);
-
         mRecyclerView = findViewById(R.id.recyclerview_forecast);
         progressBar = findViewById(R.id.progressBar);
 
@@ -75,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements ForecastAdapter.F
 
         showLoading();
         LoaderManager.getInstance(this).initLoader(LOADER_ID,null,this);
-
+        SunshineSyncUtils.initialized(this);
 
     }
     public void showLoading(){
@@ -98,12 +97,6 @@ public class MainActivity extends AppCompatActivity implements ForecastAdapter.F
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         switch (id) {
-            case R.id.refresh:
-                Log.d("tag", "onOptionsItemSelected: working");
-                mForecastAdapter.swapCursor(null);
-                LoaderManager.getInstance(this).restartLoader(LOADER_ID, null, this);
-                break;
-
             case R.id.action_map:
                 openLocationInMap();
                 break;
@@ -127,6 +120,7 @@ public class MainActivity extends AppCompatActivity implements ForecastAdapter.F
 
     private void showWeatherDataView() {
         mRecyclerView.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.INVISIBLE);
     }
 
     @Override
